@@ -1,0 +1,39 @@
+name: Ficure
+version: '${project.version}'
+main: ts.ralexme.ficure.Ficure
+api-version: '1.16'
+description: Ficure is a STILL simple plugin for u'r minecraft server, but it will/have many interesting features!
+commands:
+  clear:
+    description: It will clear the chat on the server!
+    aliases: cl
+    usage: /clear chat
+  clear chat:
+    usage: /clear chat
+
+  calculate:
+    description: It will calculate, u can use (+|-|/|*) for calculating!
+    aliases: calc
+    usage: /calculator ( num1 | + or - or / or * | num2) for calculating
+  calculate 1 + 2:
+    usage: /calculate 1 + 2
+
+  me:
+    description: You can show u'r reaction for friends!
+    usage: /me (Hello | GoodBye | WhatsUp)
+  me hello:
+    usage: /me hello
+  me goodbye:
+    usage: /me goodbye
+  me whatsup:
+    usage: /me whatsup
+
+  spawnBoss:
+    description: Spawns only three, favorite mobs(type\ boss) - EnderMan, Wither, Creeper!
+    usage: /spawnBoss enderman | wither | creeper
+  spawnBoss enderman:
+    usage: /spawnBoss enderman
+  spawnBoss creeper:
+    usage: /spawnBoss creeper
+  spawnBoss wither:
+    usage: /spawnBoss wither
