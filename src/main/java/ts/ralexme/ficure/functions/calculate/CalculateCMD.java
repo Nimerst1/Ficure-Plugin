@@ -15,10 +15,13 @@ public class CalculateCMD implements CommandExecutor {
 
         int a, b;
 
+        if(strings.length != 3) return false; //if strings nor equal 3(4) arguments
+
         try{
             a = Integer.parseInt(strings[0]);
             b = Integer.parseInt(strings[2]);
         }
+
         catch(NumberFormatException error){
             commandSender.sendMessage(ChatColor.YELLOW + "[server_prefix]" + ChatColor.RED + " Heeeey you'r command is sick...");
             return false;

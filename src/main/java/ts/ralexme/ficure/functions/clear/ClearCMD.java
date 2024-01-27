@@ -12,6 +12,7 @@ public class ClearCMD implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
 
         if (!(commandSender instanceof Player)) return true; //Check for player
+        if(strings.length != 1) return false; //if strings nor equal 1(2) arguments
 
         if(strings[0].equalsIgnoreCase("chat")){
             for(int i = 0; i < 100; i++) {

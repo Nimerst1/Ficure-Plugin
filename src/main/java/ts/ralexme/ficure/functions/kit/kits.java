@@ -15,6 +15,7 @@ public class kits implements CommandExecutor {
 
         Player player = (Player) commandSender;
         if (!(commandSender instanceof Player)) return true; //Check for player
+        if(strings.length != 1) return false; //if strings nor equal 1(2) arguments
 
         //itemstack's start
         ItemStack beef = new ItemStack(Material.COOKED_BEEF, 16);

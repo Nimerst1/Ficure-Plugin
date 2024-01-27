@@ -6,8 +6,10 @@ import ts.ralexme.ficure.functions.calculate.CalculateCMD;
 import ts.ralexme.ficure.functions.calculate.CalculateTC;
 import ts.ralexme.ficure.functions.clear.ClearCMD;
 import ts.ralexme.ficure.functions.clear.ClearTC;
-import ts.ralexme.ficure.functions.cookies.feed;
-import ts.ralexme.ficure.functions.cookies.heal;
+import ts.ralexme.ficure.functions.cookies.feedCMD;
+import ts.ralexme.ficure.functions.cookies.healCMD;
+import ts.ralexme.ficure.functions.cookies.setfoodCMD;
+import ts.ralexme.ficure.functions.cookies.sethealthCMD;
 import ts.ralexme.ficure.functions.events.events;
 import ts.ralexme.ficure.functions.kit.kits;
 import ts.ralexme.ficure.functions.me.MeCMD;
@@ -41,10 +43,14 @@ public final class Ficure extends JavaPlugin implements Listener {
 
         Objects.requireNonNull(getCommand("spawnboss")).setExecutor(new spawnboss());
 
-        Objects.requireNonNull(getCommand("heal")).setExecutor(new heal());
-        Objects.requireNonNull(getCommand("feed")).setExecutor(new feed());
+        Objects.requireNonNull(getCommand("heal")).setExecutor(new healCMD());
+        Objects.requireNonNull(getCommand("feed")).setExecutor(new feedCMD());
+
+        Objects.requireNonNull(getCommand("setfood")).setExecutor(new setfoodCMD(this)); //with THIS we gave permission to have access to the server
+        Objects.requireNonNull(getCommand("sethealth")).setExecutor(new sethealthCMD(this));
 
         Objects.requireNonNull(getCommand("kit")).setExecutor(new kits());
+
 
         //listener registration
         getServer().getPluginManager().registerEvents(new events(), this);  //this -= is FICURE.JAVA

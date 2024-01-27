@@ -52,7 +52,13 @@ commands:
 
   heal:
     description: Heals you when you want!
-    usage: /heal
+    usage: /healCMD
   feed:
     description: Feed you when you want!
     usage: /feed
+  setfood:
+    description: Set food to Player!
+    usage: /setfood <playerName> <FoodLevel>
+  sethealth:
+    description: Set food to Player!
+    usage: /sethealth <playerName> <HealthLevel>
