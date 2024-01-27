@@ -22,6 +22,7 @@ public class spawnboss implements CommandExecutor, Listener {
 
         Player player = (Player) commandSender;
         String pName = player.getName();
+        if (!(commandSender instanceof Player)) return true; //Check for player
         ItemStack helmet_max = new ItemStack(Material.NETHERITE_HELMET);
 
         if(strings[0].equalsIgnoreCase("enderman")) {

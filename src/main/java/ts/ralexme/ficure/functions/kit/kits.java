@@ -14,6 +14,8 @@ public class kits implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
 
         Player player = (Player) commandSender;
+        if (!(commandSender instanceof Player)) return true; //Check for player
+
         //itemstack's start
         ItemStack beef = new ItemStack(Material.COOKED_BEEF, 16);
         ItemStack sword_s = new ItemStack(Material.STONE_SWORD);

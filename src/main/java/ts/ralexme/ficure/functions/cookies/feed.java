@@ -12,8 +12,10 @@ public class feed implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
 
+        if (!(commandSender instanceof Player)) return true; //Check for player
+        Player player = (Player) commandSender;
+
         if(command.getName().equalsIgnoreCase("feed")){
-            Player player = (Player) commandSender;
             player.setFoodLevel(40);
             commandSender.sendMessage((ChatColor.YELLOW + "[server_prefix]" + ChatColor.DARK_GRAY +
                     " -> " + ChatColor.GRAY + " You were feeded!"));

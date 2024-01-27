@@ -16,6 +16,7 @@ public class MeCMD implements CommandExecutor {
 
         Player player = (Player) commandSender;
         String pName = player.getName();
+        if (!(commandSender instanceof Player)) return true; //Check for player
 
         if (strings[0].equalsIgnoreCase("Hello")) {
             Bukkit.broadcastMessage(ChatColor.YELLOW + "[server_prefix]" + ChatColor.DARK_GRAY +" -> " + ChatColor.GRAY + pName + " Said: Hello fellow countrymen!!");
