@@ -1,7 +1,8 @@
 # Ficure Plugin By RalexME 🔜
 
 Commands:  
-   - /clear chat
+   - /clear chat {in developmnet}
+   - /clear inventory
    - /spawnboss (bossname)
    - /me (hello | whatsup | goodbye)
    - /calculate num1 +,-,*,/ num2
@@ -16,6 +17,7 @@ Description:
    - Broadcasting u'r message for all players!
    - give the start, medium, and maximum kit for u'r players!
 
+   - Cleaning u'r dirty inventory {in development}
    - chat colors by symbol ( & ) {in development}
    - Premissions {in development}
    - config {in development}
