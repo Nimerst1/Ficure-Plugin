@@ -29,6 +29,7 @@ Events Update:
    - New loot from Wither Boss
    - onJoin events. custom join message
    - New type of Zombie "Street Walker"
+   - Ckeck for player *cmd
 
 Chat Update:
 
