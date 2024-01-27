@@ -37,3 +37,13 @@ commands:
     usage: /spawnBoss creeper
   spawnBoss wither:
     usage: /spawnBoss wither
+
+  kit:
+    description: Give's for the player kit (start, medium, maximum)
+    usage: /kit (start, medium, maximum)
+  kit start:
+    usage: /kit start
+  kit medium:
+    usage: /kit medium
+  kit maximum:
+    usage: /kit maximum

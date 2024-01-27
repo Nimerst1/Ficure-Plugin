@@ -5,6 +5,7 @@ import ts.ralexme.ficure.functions.calculate.CalculateCMD;
 import ts.ralexme.ficure.functions.calculate.CalculateTC;
 import ts.ralexme.ficure.functions.clear.ClearCMD;
 import ts.ralexme.ficure.functions.clear.ClearTC;
+import ts.ralexme.ficure.functions.kit.kits;
 import ts.ralexme.ficure.functions.me.MeCMD;
 import ts.ralexme.ficure.functions.me.MeTC;
 import ts.ralexme.ficure.functions.spawnmob.spawnboss;
@@ -35,6 +36,8 @@ public final class Ficure extends JavaPlugin {
         Objects.requireNonNull(getCommand("me")).setTabCompleter(new MeTC());
 
         Objects.requireNonNull(getCommand("spawnboss")).setExecutor(new spawnboss());
+
+        Objects.requireNonNull(getCommand("kit")).setExecutor(new kits());
     }
 
     @Override
