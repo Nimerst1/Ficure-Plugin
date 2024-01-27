@@ -22,13 +22,17 @@ Commands:
    - /feed
       - Feeds the player!
     
-   - 
+   - /setfood <playerName> <foodLevel>
+      - Set food level for players!
+    
+   - /sethealth <playerName> <healthLevel>
+      - Set health level for players!
 
 Events Update:
 
    - New loot from Wither Boss
    - onJoin events. custom join message
-   - New type of Zombie "Street Walker"
+   - New type of Zombie "Street Walker" {WILL BE REMOVED SOON}
    - Ckeck for player *cmd
 
 Chat Update:
