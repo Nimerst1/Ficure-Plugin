@@ -7,7 +7,7 @@ Commands:
    - /me (hello | whatsup | goodbye)
    - /calculate num1 +,-,*,/ num2
    - /broadcast {u'r message)
-   - /kit (start | medium | maximum)  {in development!}
+   - /kit (start | medium | maximum)
 
 Description:
    - The chat cleaning plugin for u'r server, believe you don't need it.
