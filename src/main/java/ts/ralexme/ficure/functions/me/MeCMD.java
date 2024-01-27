@@ -18,13 +18,13 @@ public class MeCMD implements CommandExecutor {
         String pName = player.getName();
 
         if (strings[0].equalsIgnoreCase("Hello")) {
-            Bukkit.broadcastMessage(ChatColor.YELLOW + "[server_prefix]" + ChatColor.DARK_GRAY +" -> " + ChatColor.GRAY + pName + " Сказал: Привет Земляки!");
+            Bukkit.broadcastMessage(ChatColor.YELLOW + "[server_prefix]" + ChatColor.DARK_GRAY +" -> " + ChatColor.GRAY + pName + " Said: Hello fellow countrymen!!");
             return true;
         } else if (strings[0].equalsIgnoreCase("GoodBye")) {
-            Bukkit.broadcastMessage(ChatColor.YELLOW + "[server_prefix]" + ChatColor.DARK_GRAY +" -> " + ChatColor.GRAY + pName +" Сказал: Пока Земляки!");
+            Bukkit.broadcastMessage(ChatColor.YELLOW + "[server_prefix]" + ChatColor.DARK_GRAY +" -> " + ChatColor.GRAY + pName +" Said: Goodbye fellow countrymen!!");
             return true;
         } else if (strings[0].equalsIgnoreCase("WhatsUp")) {
-            Bukkit.broadcastMessage(ChatColor.YELLOW + "[server_prefix]" + ChatColor.DARK_GRAY +" -> " + ChatColor.GRAY + pName + " Сказал: ВатСап земляки!");
+            Bukkit.broadcastMessage(ChatColor.YELLOW + "[server_prefix]" + ChatColor.DARK_GRAY +" -> " + ChatColor.GRAY + pName + " Said: WhatsUp fellow countrymen!!");
             return true;
         }
 

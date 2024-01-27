@@ -30,13 +30,15 @@ commands:
 
   spawnBoss:
     description: Spawns only three, favorite mobs(type\ boss) - EnderMan, Wither, Creeper!
-    usage: /spawnBoss enderman | wither | creeper
+    usage: /spawnBoss enderman | wither | creeper | skeleton
   spawnBoss enderman:
     usage: /spawnBoss enderman
   spawnBoss creeper:
     usage: /spawnBoss creeper
   spawnBoss wither:
     usage: /spawnBoss wither
+  spawnBoss skeleton:
+    usage: /spawnBoss skeleton
 
   kit:
     description: Give's for the player kit (start, medium, maximum)
@@ -47,3 +49,10 @@ commands:
     usage: /kit medium
   kit maximum:
     usage: /kit maximum
+
+  heal:
+    description: Heals you when you want!
+    usage: /heal
+  feed:
+    description: Feed you when you want!
+    usage: /feed

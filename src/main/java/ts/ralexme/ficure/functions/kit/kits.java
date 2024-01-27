@@ -62,7 +62,7 @@ public class kits implements CommandExecutor {
 
             return true;
         } else if (strings[0].equalsIgnoreCase("medium")) {
-            player.getInventory().addItem(sword_m, axe_m, pickaxe_s); //instruments
+            player.getInventory().addItem(sword_m, axe_m, pickaxe_m); //instruments
             player.getInventory().addItem(beef); //food
             player.getInventory().addItem(bow, arrow); //weapons
             //armor
