@@ -1,23 +1,43 @@
 # Ficure Plugin By RalexME 🔜
 
 Commands:  
-   - /clear chat {in developmnet}
-   - /clear inventory
-   - /spawnboss (bossname)
+   - /clear chat
+      - The chat cleaning plugin for u'r server, believe you don't need it.
+         
+   - /spawnboss (enderman | skeleton | wither | creeper)
+      - Can spawn four boss mobs - EnderMan, Creeper, Wither, Skeleton
+        
    - /me (hello | whatsup | goodbye)
-   - /calculate num1 +,-,*,/ num2
-   - /broadcast {u'r message)
+      - Share u'r reactions with other
+         
+   - /calculate (num1 +,-,*,/ num2)
+      - Calculate.. yes?
+     
    - /kit (start | medium | maximum)
+      - Give the start, medium, and maximum kit for u'r players!
+        
+   - /heal
+      - Heales the player!
+        
+   - /feed
+      - Feeds the player!
+    
+   - 
 
-Description:
-   - The chat cleaning plugin for u'r server, believe you don't need it.
-   - Can spawn three boss mobs - EnderMan, Creeper, Wither
-   - Share u'r reactions with other
-   - Calculate.. yes?
-   - Broadcasting u'r message for all players!
-   - give the start, medium, and maximum kit for u'r players!
+Events Update:
 
-   - Cleaning u'r dirty inventory {in development}
+   - New loot from Wither Boss
+   - onJoin events. custom join message
+   - New type of Zombie "Street Walker"
+
+Chat Update:
+
+   -
+
+
+In Development:
+   - /broadcast {u'r message) {in development} Broadcasting u'r message for all players!
+   - /clear inv {in development}
    - chat colors by symbol ( & ) {in development}
    - Premissions {in development}
    - config {in development}
