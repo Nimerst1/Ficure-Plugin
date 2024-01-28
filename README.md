@@ -30,21 +30,23 @@ Commands:
 
 Events Update:
 
+   - Ckeck for player, better experience with console
    - New loot from Wither Boss
    - onJoin events. custom join message
    - New type of Zombie "Street Walker" {WILL BE REMOVED SOON}
-   - Ckeck for player *cmd
 
 Chat Update:
 
-   -
+   - Now u can write message with symbol (&) YOU can use colors!
+
+File Update/Design:
+
+   - Updated some files, better expirience with comments!
 
 
 In Development:
    - /broadcast {u'r message) {in development} Broadcasting u'r message for all players!
-   - /clear inv {in development}
-   - chat colors by symbol ( & ) {in development}
+   - /clear inventory {in development}
    - Premissions {in development}
-   - config {in development}
 
 All this about beautifully design everywhere but only not in the code 😂
