@@ -52,7 +52,7 @@ commands:
 
   heal:
     description: Heals you when you want!
-    usage: /healCMD
+    usage: /heal
   feed:
     description: Feed you when you want!
     usage: /feed
@@ -62,3 +62,14 @@ commands:
   sethealth:
     description: Set food to Player!
     usage: /sethealth <playerName> <HealthLevel>
+
+  reloadFicure:
+    description: Reloads Ficure - config.yml
+    usage: /reloadFicure
+
+  test:
+    description: Tests chatcolor function
+    usage: ERROR, if you see this message (if) didn't work )))
+  test2:
+    description: Test second type of chatcolor
+    usage: ERROR, if you see this message (if) didn't work )))

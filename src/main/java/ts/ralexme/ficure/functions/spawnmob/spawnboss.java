@@ -15,14 +15,18 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
+import ts.ralexme.ficure.Ficure;
 
 public class spawnboss implements CommandExecutor, Listener {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
 
+        if (!(commandSender instanceof Player)){
+            commandSender.sendMessage("Hey! You must be a player to use this command!");
+            return false;
+        } //Check for player
         Player player = (Player) commandSender;
         String pName = player.getName();
-        if (!(commandSender instanceof Player)) return true; //Check for player
         if(strings.length != 1) return false; //if strings nor equal 1(2) arguments
         ItemStack helmet_max = new ItemStack(Material.NETHERITE_HELMET);
 
@@ -34,7 +38,7 @@ public class spawnboss implements CommandExecutor, Listener {
             enderman.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000, 10));
             //text
             enderman.setCustomName(ChatColor.RED + "ENDERMAN BOSS" + " SUMMONED BY: " + pName);
-            Bukkit.broadcastMessage((ChatColor.YELLOW + "[server_prefix]" + ChatColor.DARK_GRAY + " -> "
+            Bukkit.broadcastMessage((ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix.name") + ChatColor.DARK_GRAY + " -> "
                     + ChatColor.GRAY + pName + " Summoned: EnderMan" + ChatColor.DARK_RED
                     + " BOSS" + ChatColor.GRAY + "!"));
             //sound
@@ -50,7 +54,7 @@ public class spawnboss implements CommandExecutor, Listener {
             creeper.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000, 10));
             //text
             creeper.setCustomName(ChatColor.RED + "CREEPER BOSS" + " SUMMONED BY: " + pName);
-            Bukkit.broadcastMessage((ChatColor.YELLOW + "[server_prefix]" + ChatColor.DARK_GRAY + " -> "
+            Bukkit.broadcastMessage((ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY + " -> "
                     + ChatColor.GRAY + pName + " Summoned: Creeper" + ChatColor.DARK_RED
                     + " BOSS" + ChatColor.GRAY + "!"));
             //sound
@@ -65,7 +69,7 @@ public class spawnboss implements CommandExecutor, Listener {
             wither.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 60, 3));
             //text
             wither.setCustomName(ChatColor.RED + "WITHER BOSS" + " SUMMONED BY: " + pName);
-            Bukkit.broadcastMessage((ChatColor.YELLOW + "[server_prefix]" + ChatColor.DARK_GRAY + " -> "
+            Bukkit.broadcastMessage((ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY + " -> "
                     + ChatColor.GRAY + pName + " Summoned: Wither" + ChatColor.DARK_RED
                     + " BOSS" + ChatColor.GRAY + "!"));
             //sound
@@ -83,7 +87,7 @@ public class spawnboss implements CommandExecutor, Listener {
 
             //text
             skeleton.setCustomName(ChatColor.RED + "SKELETON BOSS" + " SUMMONED BY: " + pName);
-            Bukkit.broadcastMessage((ChatColor.YELLOW + "[server_prefix]" + ChatColor.DARK_GRAY + " -> "
+            Bukkit.broadcastMessage((ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY + " -> "
                     + ChatColor.GRAY + pName + " Summoned: Skeleton" + ChatColor.DARK_RED
                     + " BOSS" + ChatColor.GRAY + "!"));
             //sound

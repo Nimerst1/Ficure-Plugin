@@ -1,4 +1,2 @@
-server_prefix: //все server_prefix под конфиг пользователя
-  -
-hello_message: //все hello_message под конфиг пользователя
-  -
+# Write u'r server name
+server_prefix: 'SERVERNAME'

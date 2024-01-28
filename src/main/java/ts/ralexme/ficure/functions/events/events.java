@@ -10,9 +10,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import ts.ralexme.ficure.Ficure;
 
 
 public class events implements Listener {
@@ -42,7 +44,16 @@ public class events implements Listener {
     @EventHandler
     public void handleJoinEvent(PlayerJoinEvent event){
         Player player = event.getPlayer(); //Player info
+        player.sendMessage(ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +" -> " +  ChatColor.BOLD + ChatColor.DARK_RED + " You successfully connected to the [server_prefix]");
+    }
 
-        player.sendMessage(ChatColor.YELLOW + "[server_prefix]" + ChatColor.DARK_GRAY +" -> " + player + ChatColor.BOLD + ChatColor.DARK_RED + " Connected to the [server_prefix]");
+    @EventHandler
+    public void playerChat(AsyncPlayerChatEvent e){ //Chat colors event
+        //get the chat message
+        String original = e.getMessage();
+        //format the chat message with &colorCodes
+        String formatted = ChatColor.translateAlternateColorCodes('&', original);
+        //set the message to the formatted message
+        e.setMessage(formatted);
     }
 }

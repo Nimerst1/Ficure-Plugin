@@ -8,13 +8,17 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
+import ts.ralexme.ficure.Ficure;
 
 public class kits implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
 
+        if (!(commandSender instanceof Player)){
+            commandSender.sendMessage("Hey! You must be a player to use this command!");
+            return false;
+        } //Check for player
         Player player = (Player) commandSender;
-        if (!(commandSender instanceof Player)) return true; //Check for player
         if(strings.length != 1) return false; //if strings nor equal 1(2) arguments
 
         //itemstack's start
@@ -59,8 +63,8 @@ public class kits implements CommandExecutor {
             player.getEquipment().setChestplate(chestplate_l);
             player.getEquipment().setHelmet(helmet_l);
 
-            commandSender.sendMessage(ChatColor.YELLOW + "[server_prefix]" + ChatColor.DARK_GRAY +" ->"
-                    + ChatColor.GRAY + "You're successfully claimed" + ChatColor.DARK_GREEN +
+            commandSender.sendMessage(ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +" ->"
+                    + ChatColor.GRAY + "You're successfully claimed" + ChatColor.BOLD +
                     " kit Start" + ChatColor.GRAY + "!");
 
             return true;
@@ -74,8 +78,8 @@ public class kits implements CommandExecutor {
             player.getEquipment().setChestplate(chestplate_i);
             player.getEquipment().setHelmet(helmet_i);
 
-            commandSender.sendMessage(ChatColor.YELLOW + "[server_prefix]" + ChatColor.DARK_GRAY +" ->"
-                    + ChatColor.GRAY + "You're successfully claimed" + ChatColor.DARK_GREEN +
+            commandSender.sendMessage(ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +" ->"
+                    + ChatColor.GRAY + "You're successfully claimed" + ChatColor.BOLD +
                     " kit Medium" + ChatColor.GRAY + "!");
 
             return true;
@@ -89,8 +93,8 @@ public class kits implements CommandExecutor {
             player.getEquipment().setChestplate(chestplate_max);
             player.getEquipment().setHelmet(helmet_max);
 
-            commandSender.sendMessage(ChatColor.YELLOW + "[server_prefix]" + ChatColor.DARK_GRAY +" ->"
-                    + ChatColor.GRAY + "You're successfully claimed" + ChatColor.DARK_GREEN +
+            commandSender.sendMessage(ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +" ->"
+                    + ChatColor.GRAY + "You're successfully claimed" + ChatColor.BOLD +
                     " kit Maximum" + ChatColor.GRAY + "!");
 
             return true;

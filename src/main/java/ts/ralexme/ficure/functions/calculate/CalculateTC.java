@@ -7,18 +7,25 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CalculateTC implements TabCompleter {
     List<String> arguments = new ArrayList<String>();
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-        if (arguments.isEmpty()) {
-            arguments.add("1 + 2");
+        if(strings.length == 1) {
+            return Arrays.asList("1", "500", "1000");
         }
+        else if(strings.length == 2){
+               return Arrays.asList("+", "-", "*", "/");
+            }
+        else if (strings.length == 3){
+            return Arrays.asList("1", "500", "1000");
+        }
+        {
 
-        //NOT WORKING AT ALL
-
-        return null;
+        }
+        return new ArrayList<>();
     }
 }
