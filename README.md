@@ -30,6 +30,7 @@ Commands:
 
 Events Update:
 
+   - Added cooldown for commands
    - Ckeck for player, better experience with console
    - New loot from Wither Boss
    - onJoin events. custom join message
@@ -46,7 +47,9 @@ File Update/Design:
 
 In Development:
    - /broadcast {u'r message) {in development} Broadcasting u'r message for all players!
+   - Announcements
    - /clear inventory {in development}
    - Premissions {in development}
+   - Cooldown (configure in config.yml)
 
 All this about beautifully design everywhere but only not in the code 😂
