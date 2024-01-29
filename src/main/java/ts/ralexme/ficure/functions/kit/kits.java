@@ -10,7 +10,16 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import ts.ralexme.ficure.Ficure;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public class kits implements CommandExecutor {
+
+    //-----------------------------------------------------------------
+    private final Map<UUID, Long> cooldowns = new HashMap<>();  //cooldown Getting UUID, and long value
+    private static final long cl_t = 3600000; //1 hour The cooldown
+    //-----------------------------------------------------------------
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
 
@@ -20,6 +29,15 @@ public class kits implements CommandExecutor {
         } //Check for player
         Player player = (Player) commandSender;
         if(strings.length != 1) return false; //if strings nor equal 1(2) arguments
+
+        //-----------------------------------------------------------------
+        if(!(isCooldownExpired(player, cl_t))){
+            commandSender.sendMessage((ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +
+                    " -> " + ChatColor.GRAY + " Please wait ~1 hour before using this command again!"));
+            return true;                    //SETTING COOLDOWN / MESSAGE
+        }
+        setCooldown(player);
+        //-----------------------------------------------------------------
 
         //itemstack's start
         ItemStack beef = new ItemStack(Material.COOKED_BEEF, 16);
@@ -102,5 +120,21 @@ public class kits implements CommandExecutor {
 
 
         return false;
+    }
+
+    //-----------------------------------------------------------------
+    private boolean isCooldownExpired(Player player, long cooldown) {
+        final Long startTime = cooldowns.get(player.getUniqueId());
+        if (startTime == null) {
+            return true;
+        }
+        final long elapsedTime = System.currentTimeMillis() - startTime;       //Cooldown 2
+        return elapsedTime >= cooldown;
+    }
+
+    private void setCooldown(Player player) {
+        final Long currentTimeMillis = System.currentTimeMillis();
+        cooldowns.merge(player.getUniqueId(), currentTimeMillis, (oldValue, newValue) -> newValue);
+        //-----------------------------------------------------------------
     }
 }

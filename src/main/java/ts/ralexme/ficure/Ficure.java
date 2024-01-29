@@ -26,6 +26,7 @@ import ts.ralexme.ficure.functions.spawnmob.spawnbossTC;
 import ts.ralexme.ficure.functions.spawnmob.spawnboss;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Objects;
 
 
@@ -84,6 +85,7 @@ public final class Ficure extends JavaPlugin implements Listener {
 
         //listener registration
         getServer().getPluginManager().registerEvents(new events(), this);  //this -= is FICURE.JAVA
+
     }
 
     public static Ficure getInstance() {
@@ -97,6 +99,8 @@ public final class Ficure extends JavaPlugin implements Listener {
         }
         return true;
     }
+
+
 
     @Override
     public void onDisable() {

@@ -17,7 +17,16 @@ import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 import ts.ralexme.ficure.Ficure;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public class spawnboss implements CommandExecutor, Listener {
+
+    //-----------------------------------------------------------------
+    private final Map<UUID, Long> cooldowns = new HashMap<>();  //cooldown Getting UUID, and long value
+    private static final long cl_t = 30000; //30 sec The cooldown
+    //-----------------------------------------------------------------
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
 
@@ -28,6 +37,16 @@ public class spawnboss implements CommandExecutor, Listener {
         Player player = (Player) commandSender;
         String pName = player.getName();
         if(strings.length != 1) return false; //if strings nor equal 1(2) arguments
+
+        //-----------------------------------------------------------------
+        if(!(isCooldownExpired(player, cl_t))){
+            commandSender.sendMessage((ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +
+                    " -> " + ChatColor.GRAY + " Please wait ~30 seconds before using this command again!"));
+            return true;                    //SETTING COOLDOWN / MESSAGE
+        }
+        setCooldown(player);
+        //-----------------------------------------------------------------
+
         ItemStack helmet_max = new ItemStack(Material.NETHERITE_HELMET);
 
         if(strings[0].equalsIgnoreCase("enderman")) {
@@ -38,7 +57,7 @@ public class spawnboss implements CommandExecutor, Listener {
             enderman.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000, 10));
             //text
             enderman.setCustomName(ChatColor.RED + "ENDERMAN BOSS" + " SUMMONED BY: " + pName);
-            Bukkit.broadcastMessage((ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix.name") + ChatColor.DARK_GRAY + " -> "
+            Bukkit.broadcastMessage((ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY + " -> "
                     + ChatColor.GRAY + pName + " Summoned: EnderMan" + ChatColor.DARK_RED
                     + " BOSS" + ChatColor.GRAY + "!"));
             //sound
@@ -96,5 +115,19 @@ public class spawnboss implements CommandExecutor, Listener {
         }
 
         return false;
+    }
+    //-----------------------------------------------------------------
+    private boolean isCooldownExpired(Player player, long cooldown) {
+        final Long startTime = cooldowns.get(player.getUniqueId());
+        if(startTime == null){
+            return true;
+        }
+        final long elapsedTime = System.currentTimeMillis() - startTime;       //Cooldown 2
+        return elapsedTime >=  cooldown;
+    }
+    private void setCooldown(Player player) {
+        final Long currentTimeMillis = System.currentTimeMillis();
+        cooldowns.merge(player.getUniqueId(), currentTimeMillis, (oldValue, newValue) -> newValue);
+        //-----------------------------------------------------------------
     }
 }
