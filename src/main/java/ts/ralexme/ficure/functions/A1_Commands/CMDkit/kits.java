@@ -1,4 +1,4 @@
-package ts.ralexme.ficure.functions.kit;
+package ts.ralexme.ficure.functions.A1_Commands.CMDkit;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -16,28 +16,21 @@ import java.util.UUID;
 
 public class kits implements CommandExecutor {
 
-    //-----------------------------------------------------------------
+
     private final Map<UUID, Long> cooldowns = new HashMap<>();  //cooldown Getting UUID, and long value
     private static final long cl_t = 3600000; //1 hour The cooldown
-    //-----------------------------------------------------------------
+
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
 
+        //------------------------SOME IMPORTS/CHECKS/FEATURES----------------------------
         if (!(commandSender instanceof Player)){
             commandSender.sendMessage("Hey! You must be a player to use this command!");
             return false;
         } //Check for player
         Player player = (Player) commandSender;
         if(strings.length != 1) return false; //if strings nor equal 1(2) arguments
-
-        //-----------------------------------------------------------------
-        if(!(isCooldownExpired(player, cl_t))){
-            commandSender.sendMessage((ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +
-                    " -> " + ChatColor.GRAY + " Please wait ~1 hour before using this command again!"));
-            return true;                    //SETTING COOLDOWN / MESSAGE
-        }
-        setCooldown(player);
-        //-----------------------------------------------------------------
+        //------------------------/SOME IMPORTS/CHECKS/FEATURES----------------------------
 
         //itemstack's start
         ItemStack beef = new ItemStack(Material.COOKED_BEEF, 16);
@@ -73,6 +66,11 @@ public class kits implements CommandExecutor {
 
 
         if (strings[0].equalsIgnoreCase("start")) {
+            if(!commandSender.hasPermission("ficure.kitstart")){
+                commandSender.sendMessage(ChatColor.RED + "You must have permission to use /" + command.getName());
+                return true;
+            }
+
             player.getInventory().addItem(sword_s, axe_s, pickaxe_s); //instruments
             player.getInventory().addItem(beef); //food
             //armor
@@ -84,9 +82,20 @@ public class kits implements CommandExecutor {
             commandSender.sendMessage(ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +" ->"
                     + ChatColor.GRAY + "You're successfully claimed" + ChatColor.BOLD +
                     " kit Start" + ChatColor.GRAY + "!");
-
+            if(!(isCooldownExpired(player, cl_t))){
+                commandSender.sendMessage((ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +
+                        " -> " + ChatColor.GRAY + " Please wait ~1 hour before using this command again!"));
+                return true;                    //SETTING COOLDOWN for start
+            }
+            setCooldown(player);
             return true;
+
         } else if (strings[0].equalsIgnoreCase("medium")) {
+            if(!commandSender.hasPermission("ficure.kitmedium")){
+                commandSender.sendMessage(ChatColor.RED + "You must have permission to use /" + command.getName());
+                return true;
+            }
+
             player.getInventory().addItem(sword_m, axe_m, pickaxe_m); //instruments
             player.getInventory().addItem(beef); //food
             player.getInventory().addItem(bow, arrow); //weapons
@@ -99,9 +108,21 @@ public class kits implements CommandExecutor {
             commandSender.sendMessage(ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +" ->"
                     + ChatColor.GRAY + "You're successfully claimed" + ChatColor.BOLD +
                     " kit Medium" + ChatColor.GRAY + "!");
-
+            if(!(isCooldownExpired(player, cl_t))){
+                commandSender.sendMessage((ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +
+                        " -> " + ChatColor.GRAY + " Please wait ~1 hour before using this command again!"));
+                return true;                    //SETTING COOLDOWN for start 2
+            }
+            setCooldown(player);
             return true;
-        } else if(strings[0].equalsIgnoreCase("maximum")){
+        }
+
+        else if(strings[0].equalsIgnoreCase("maximum")){
+            if(!commandSender.hasPermission("ficure.kitmaximum")){
+                commandSender.sendMessage(ChatColor.RED + "You must have permission to use /" + command.getName());
+                return true;
+            }
+
             player.getInventory().addItem(sword_max, axe_max, pickaxe_max); //instruments
             player.getInventory().addItem(gapple, beef); //food
             player.getInventory().addItem(bow, arrow, arrow_max); //weapons
@@ -114,7 +135,12 @@ public class kits implements CommandExecutor {
             commandSender.sendMessage(ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +" ->"
                     + ChatColor.GRAY + "You're successfully claimed" + ChatColor.BOLD +
                     " kit Maximum" + ChatColor.GRAY + "!");
-
+            if(!(isCooldownExpired(player, cl_t))){
+                commandSender.sendMessage((ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +
+                        " -> " + ChatColor.GRAY + " Please wait ~1 hour before using this command again!"));
+                return true;                    //SETTING COOLDOWN for start 3
+            }
+            setCooldown(player);
             return true;
         }
 
@@ -122,7 +148,7 @@ public class kits implements CommandExecutor {
         return false;
     }
 
-    //-----------------------------------------------------------------
+    //------------------------SOME IMPORTS/CHECKS/FEATURES----------------------------
     private boolean isCooldownExpired(Player player, long cooldown) {
         final Long startTime = cooldowns.get(player.getUniqueId());
         if (startTime == null) {
@@ -135,6 +161,6 @@ public class kits implements CommandExecutor {
     private void setCooldown(Player player) {
         final Long currentTimeMillis = System.currentTimeMillis();
         cooldowns.merge(player.getUniqueId(), currentTimeMillis, (oldValue, newValue) -> newValue);
-        //-----------------------------------------------------------------
     }
+    //------------------------/SOME IMPORTS/CHECKS/FEATURES----------------------------
 }

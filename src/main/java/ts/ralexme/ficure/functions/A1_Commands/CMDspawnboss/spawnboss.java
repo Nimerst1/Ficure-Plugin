@@ -1,4 +1,4 @@
-package ts.ralexme.ficure.functions.spawnmob;
+package ts.ralexme.ficure.functions.A1_Commands.CMDspawnboss;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -10,7 +10,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -23,29 +22,36 @@ import java.util.UUID;
 
 public class spawnboss implements CommandExecutor, Listener {
 
-    //-----------------------------------------------------------------
     private final Map<UUID, Long> cooldowns = new HashMap<>();  //cooldown Getting UUID, and long value
-    private static final long cl_t = 30000; //30 sec The cooldown
-    //-----------------------------------------------------------------
+    private static final long cl_t = 300000; //300 sec The cooldown
+
+
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
 
+        //------------------------SOME IMPORTS/CHECKS/FEATURES----------------------------
         if (!(commandSender instanceof Player)){
             commandSender.sendMessage("Hey! You must be a player to use this command!");
             return false;
         } //Check for player
+
         Player player = (Player) commandSender;
         String pName = player.getName();
         if(strings.length != 1) return false; //if strings nor equal 1(2) arguments
 
-        //-----------------------------------------------------------------
+        if(!commandSender.hasPermission("ficure.spawnboss")){
+            commandSender.sendMessage(ChatColor.RED + "You must have permission to use /" + command.getName());
+            return true;
+        }
+
         if(!(isCooldownExpired(player, cl_t))){
             commandSender.sendMessage((ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +
-                    " -> " + ChatColor.GRAY + " Please wait ~30 seconds before using this command again!"));
+                    " -> " + ChatColor.GRAY + " Please wait ~5 min before using this command again!"));
             return true;                    //SETTING COOLDOWN / MESSAGE
         }
         setCooldown(player);
-        //-----------------------------------------------------------------
+        //------------------------/SOME IMPORTS/CHECKS/FEATURES----------------------------
+
 
         ItemStack helmet_max = new ItemStack(Material.NETHERITE_HELMET);
 
@@ -116,7 +122,8 @@ public class spawnboss implements CommandExecutor, Listener {
 
         return false;
     }
-    //-----------------------------------------------------------------
+
+    //------------------------SOME IMPORTS/CHECKS/FEATURES----------------------------
     private boolean isCooldownExpired(Player player, long cooldown) {
         final Long startTime = cooldowns.get(player.getUniqueId());
         if(startTime == null){
@@ -128,6 +135,6 @@ public class spawnboss implements CommandExecutor, Listener {
     private void setCooldown(Player player) {
         final Long currentTimeMillis = System.currentTimeMillis();
         cooldowns.merge(player.getUniqueId(), currentTimeMillis, (oldValue, newValue) -> newValue);
-        //-----------------------------------------------------------------
     }
+    //------------------------/SOME IMPORTS/CHECKS/FEATURES----------------------------
 }

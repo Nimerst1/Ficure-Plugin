@@ -6,7 +6,7 @@
 
   <groupId>ts.ralexme</groupId>
   <artifactId>Ficure</artifactId>
-  <version>0.1.9</version>
+  <version>0.3.0</version>
   <packaging>jar</packaging>
 
   <name>Ficure</name>

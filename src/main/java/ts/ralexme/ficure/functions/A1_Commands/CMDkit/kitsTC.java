@@ -1,6 +1,5 @@
-package ts.ralexme.ficure.functions.me;
+package ts.ralexme.ficure.functions.A1_Commands.CMDkit;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -11,11 +10,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MeTC implements TabCompleter {
+public class kitsTC implements TabCompleter {
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if(strings.length == 1) {
-            return Arrays.asList("hello", "goodbye", "whatsup");
+            return Arrays.asList("maximum", "medium", "start");
         }
         return new ArrayList<>();
     }

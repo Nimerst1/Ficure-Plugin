@@ -4,68 +4,76 @@ main: ts.ralexme.ficure.Ficure
 api-version: '1.16'
 description: Ficure is a STILL simple plugin for u'r minecraft server, but it will/have many interesting features!
 commands:
+
+
+#--------------AAAAAAAAA-------0000----------------------------------------------------------------#
+#--------------A-------A------0---0----------------------------------------------------------------#
+#--------------A-------A-----0----0----------------------------------------------------------------#
+#--------------AAAAAAAAA----------0----------------------------------------------------------------#
+#--------------A-------A----------0----------------------------------------------------------------#
+#--------------A-------A----------0----------------------------------------------------------------#
+#--------------A-------A------000000000------------------------------------------------------------#
+
+  #A1_Commands
   clear:
     description: It will clear the chat on the server!
     aliases: cl
-    usage: /clear chat
-  clear chat:
     usage: /clear chat
 
   calculate:
     description: It will calculate, u can use (+|-|/|*) for calculating!
     aliases: calc
     usage: /calculator ( num1 | + or - or / or * | num2) for calculating
-  calculate 1 + 2:
-    usage: /calculate 1 + 2
 
   me:
     description: You can show u'r reaction for friends!
-    usage: /me (Hello | GoodBye | WhatsUp)
-  me hello:
-    usage: /me hello
-  me goodbye:
-    usage: /me goodbye
-  me whatsup:
-    usage: /me whatsup
+    usage: /me <Hello | GoodBye | WhatsUp>
 
   spawnBoss:
     description: Spawns only four, favorite mobs(type\ boss) - EnderMan, Wither, Creeper!
-    usage: /spawnBoss enderman | wither | creeper | skeleton
-  spawnBoss enderman:
-    usage: /spawnBoss enderman
-  spawnBoss creeper:
-    usage: /spawnBoss creeper
-  spawnBoss wither:
-    usage: /spawnBoss wither
-  spawnBoss skeleton:
-    usage: /spawnBoss skeleton
+    usage: /spawnBoss <enderman | wither | creeper | skeleton>
 
   kit:
     description: Give's for the player kit (start, medium, maximum)
-    usage: /kit (start, medium, maximum)
-  kit start:
-    usage: /kit start
-  kit medium:
-    usage: /kit medium
-  kit maximum:
-    usage: /kit maximum
+    usage: /kit <start, medium, maximum>
 
-  heal:
-    description: Heals you when you want!
-    usage: /heal
-  feed:
-    description: Feed you when you want!
-    usage: /feed
   setfood:
     description: Set food to Player!
     usage: /setfood <playerName> <FoodLevel>
+
   sethealth:
     description: Set food to Player!
     usage: /sethealth <playerName> <HealthLevel>
 
-  reloadFicure:
-    description: Reloads Ficure - config.yml
-    usage: /reloadFicure
+
+#--------------BBBBBBBB------- 0000----------------------------------------------------------------#
+#--------------B-------B------0---0----------------------------------------------------------------#
+#--------------B-------B-----0----0----------------------------------------------------------------#
+#--------------BBBBBBB------------0----------------------------------------------------------------#
+#--------------B-------B----------0----------------------------------------------------------------#
+#--------------B-------B----------0----------------------------------------------------------------#
+#--------------BBBBBBBB-------000000000------------------------------------------------------------#
+
+    #B1_Commands
+  heal:
+    description: Heals you when you want!
+    usage: /heal
+
+  feed:
+    description: Feed you when you want!
+    usage: /feed
+
+  broadcast:
+    description: Broadcast u'r messages for the server
+    aliases: br
+    usage: /broadcast <message>
+
+
+  #--------------------------------------------------------------------------------------------------#
+  #--------------------------------------------------------------------------------------------------#
+  #---------------------------------------TESTCMD's--------------------------------------------------#
+  #--------------------------------------------------------------------------------------------------#
+  #--------------------------------------------------------------------------------------------------#
 
   test:
     description: Tests chatcolor function
@@ -73,3 +81,14 @@ commands:
   test2:
     description: Test second type of chatcolor
     usage: ERROR, if you see this message (if) didn't work )))
+
+
+    #--------------------------------------------------------------------------------------------------#
+    #--------------------------------------------------------------------------------------------------#
+    #------------------------------------TECHNICAL CMD's-----------------------------------------------#
+    #--------------------------------------------------------------------------------------------------#
+    #--------------------------------------------------------------------------------------------------#
+
+  reloadFicure:
+    description: Reloads Ficure - config.yml
+    usage: /reloadFicure

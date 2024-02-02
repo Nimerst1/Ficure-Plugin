@@ -1,4 +1,4 @@
-package ts.ralexme.ficure.functions.calculate;
+package ts.ralexme.ficure.functions.A1_Commands.CMDcalculate;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

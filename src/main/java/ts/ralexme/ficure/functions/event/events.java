@@ -1,8 +1,7 @@
-package ts.ralexme.ficure.functions.events;
+package ts.ralexme.ficure.functions.event;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Wither;
 import org.bukkit.entity.Zombie;
@@ -15,7 +14,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import ts.ralexme.ficure.Ficure;
-
 
 public class events implements Listener {
 
@@ -41,17 +39,18 @@ public class events implements Listener {
             zombie.getEquipment().setHelmet(helmet_netherite);
         }
     }
+
     @EventHandler
     public void handleJoinEvent(PlayerJoinEvent event){
         Player player = event.getPlayer(); //Player info
-        player.sendMessage(ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +" -> " +  ChatColor.BOLD + ChatColor.DARK_RED + " You successfully connected to the [server_prefix]");
+        player.sendMessage(ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +" -> " +  ChatColor.BOLD + ChatColor.DARK_RED + " You successfully connected to the " + Ficure.getInstance().getConfig().getString("server_prefix"));
     }
 
     @EventHandler
     public void playerChat(AsyncPlayerChatEvent e){ //Chat colors event
-        //get the chat message
+        //get the FunctionsCHAT message
         String original = e.getMessage();
-        //format the chat message with &colorCodes
+        //format the FunctionsCHAT message with &colorCodes
         String formatted = ChatColor.translateAlternateColorCodes('&', original);
         //set the message to the formatted message
         e.setMessage(formatted);

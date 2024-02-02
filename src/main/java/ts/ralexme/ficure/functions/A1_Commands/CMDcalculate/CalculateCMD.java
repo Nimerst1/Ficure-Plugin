@@ -1,4 +1,4 @@
-package ts.ralexme.ficure.functions.calculate;
+package ts.ralexme.ficure.functions.A1_Commands.CMDcalculate;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -23,20 +23,24 @@ public class CalculateCMD implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
 
+        //------------------------SOME IMPORTS/CHECKS/FEATURES----------------------------
         if (!(commandSender instanceof Player)){
             commandSender.sendMessage("Hey! You must be a player to use this command!");
             return false;
         } //Check for player
         Player player = (Player) commandSender;
+        if(!commandSender.hasPermission("ficure.calculate")){
+            commandSender.sendMessage(ChatColor.RED + "You must have permission to use /" + command.getName());
+            return true;
+        }
 
-        //-----------------------------------------------------------------
         if(!(isCooldownExpired(player, cl_t))){
             commandSender.sendMessage((ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +
                     " -> " + ChatColor.GRAY + " Please wait ~30 seconds before using this command again!"));
             return true;                    //SETTING COOLDOWN / MESSAGE
         }
         setCooldown(player);
-        //-----------------------------------------------------------------
+        //------------------------/SOME IMPORTS/CHECKS/FEATURES----------------------------
 
         int a, b;
 
@@ -69,7 +73,8 @@ public class CalculateCMD implements CommandExecutor {
         }
         return false;
     }
-    //-----------------------------------------------------------------
+
+    //------------------------SOME IMPORTS/CHECKS/FEATURES----------------------------
     private boolean isCooldownExpired(Player player, long cooldown) {
         final Long startTime = cooldowns.get(player.getUniqueId());
         if (startTime == null) {
@@ -82,6 +87,6 @@ public class CalculateCMD implements CommandExecutor {
     private void setCooldown(Player player) {
         final Long currentTimeMillis = System.currentTimeMillis();
         cooldowns.merge(player.getUniqueId(), currentTimeMillis, (oldValue, newValue) -> newValue);
-        //-----------------------------------------------------------------
     }
+    //------------------------/SOME IMPORTS/CHECKS/FEATURES----------------------------
 }

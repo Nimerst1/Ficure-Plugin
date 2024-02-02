@@ -1,2 +1,16 @@
 # Write u'r server name
 server_prefix: 'SERVERNAME'
+
+
+
+# ALL PERMISSIONS
+# /spawnboss - ficure.spawnboos
+# /me - ficure.me
+# /kit start / medium / maximum - ficure.kitstart / ficure.kitmedium / ficure.kitmaximum / ficure.kitmaximum
+# /feed - ficure.feed
+# /heal - ficure.heal
+# /setfood - ficure.setfood
+# /sethealth - ficure.sethealth
+# /clear FunctionsCHAT - ficure.clearchat
+# /calculate - ficure.calculate
+# /broadcast - ficure.broadcast

@@ -8,31 +8,32 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
-import ts.ralexme.ficure.functions.ChatFunctions.chat;
-import ts.ralexme.ficure.functions.calculate.CalculateCMD;
-import ts.ralexme.ficure.functions.calculate.CalculateTC;
-import ts.ralexme.ficure.functions.clear.ClearCMD;
-import ts.ralexme.ficure.functions.clear.ClearTC;
-import ts.ralexme.ficure.functions.cookies.feedCMD;
-import ts.ralexme.ficure.functions.cookies.healCMD;
-import ts.ralexme.ficure.functions.cookies.setfoodCMD;
-import ts.ralexme.ficure.functions.cookies.sethealthCMD;
-import ts.ralexme.ficure.functions.events.events;
-import ts.ralexme.ficure.functions.kit.kits;
-import ts.ralexme.ficure.functions.kit.kitsTC;
-import ts.ralexme.ficure.functions.me.MeCMD;
-import ts.ralexme.ficure.functions.me.MeTC;
-import ts.ralexme.ficure.functions.spawnmob.spawnbossTC;
-import ts.ralexme.ficure.functions.spawnmob.spawnboss;
+import ts.ralexme.ficure.functions.A1_Commands.CMDsetfood.setfoodTC;
+import ts.ralexme.ficure.functions.A1_Commands.CMDsethealth.sethealthTC;
+import ts.ralexme.ficure.functions.B1_Commands.broadcastCMD;
+import ts.ralexme.ficure.functions.Z0_TestFUNCTIONs.FunctionsCHAT;
+import ts.ralexme.ficure.functions.A1_Commands.CMDcalculate.CalculateCMD;
+import ts.ralexme.ficure.functions.A1_Commands.CMDcalculate.CalculateTC;
+import ts.ralexme.ficure.functions.A1_Commands.CMDclear.ClearCMD;
+import ts.ralexme.ficure.functions.A1_Commands.CMDclear.ClearTC;
+import ts.ralexme.ficure.functions.B1_Commands.feedCMD;
+import ts.ralexme.ficure.functions.B1_Commands.healCMD;
+import ts.ralexme.ficure.functions.A1_Commands.CMDsetfood.setfoodCMD;
+import ts.ralexme.ficure.functions.A1_Commands.CMDsethealth.sethealthCMD;
+import ts.ralexme.ficure.functions.event.events;
+import ts.ralexme.ficure.functions.A1_Commands.CMDkit.kits;
+import ts.ralexme.ficure.functions.A1_Commands.CMDkit.kitsTC;
+import ts.ralexme.ficure.functions.A1_Commands.CMDme.MeCMD;
+import ts.ralexme.ficure.functions.A1_Commands.CMDme.MeTC;
+import ts.ralexme.ficure.functions.A1_Commands.CMDspawnboss.spawnbossTC;
+import ts.ralexme.ficure.functions.A1_Commands.CMDspawnboss.spawnboss;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.Objects;
 
 
 public final class Ficure extends JavaPlugin implements Listener {
     public static final String ANSI_RED = "\u001B[31m";
-
     private static Ficure instance; //instance for config and others
     FileConfiguration config; //for config
     File cfile;  //for config
@@ -40,21 +41,24 @@ public final class Ficure extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        //----------------------------------------------------------------
-        //ENABLING
+        //-------------------------- ENABLING --------------------------
         for(int count = 0; count < 100; count += 10) {
-            System.out.println(ANSI_RED + "Ficure Ready for " + count + "%");
+            getServer().getLogger().info(ANSI_RED + "Ficure Ready for " + count + "%");
         }
-        System.out.println(ANSI_RED + "Ficure by RalexME - Successfully enabled");
-        //----------------------------------------------------------------
-        //FUNCTIONS
+        getServer().getLogger().info(ANSI_RED + "Ficure by RalexME - Successfully enabled");
+        //------------------------- /ENABLING -----------------------------
+
+
+        //-------------------------- NOW FOR CONFIG --------------------------
         instance = this; //instance for config and others
         saveDefaultConfig(); //config.yml
         config = getConfig(); //config
-        cfile = new File(getDataFolder(), "config.yml");
+        cfile = new File(getDataFolder(), "config.yml"); //getting config.yml
+        //-------------------------- /NOW FOR CONFIG --------------------------
 
 
 
+        //--------------------------- FUNCTIONS --------------------------------
         Objects.requireNonNull(getCommand("clear")).setExecutor(new ClearCMD());
         Objects.requireNonNull(getCommand("clear")).setTabCompleter(new ClearTC());
 
@@ -70,28 +74,35 @@ public final class Ficure extends JavaPlugin implements Listener {
         Objects.requireNonNull(getCommand("heal")).setExecutor(new healCMD());
         Objects.requireNonNull(getCommand("feed")).setExecutor(new feedCMD());
 
-        Objects.requireNonNull(getCommand("setfood")).setExecutor(new setfoodCMD(this)); //with THIS we gave permission to have access to the server
-        Objects.requireNonNull(getCommand("sethealth")).setExecutor(new sethealthCMD(this));
+        Objects.requireNonNull(getCommand("setfood")).setExecutor(new setfoodCMD(this)); //with THIS we gave access to the server
+        Objects.requireNonNull(getCommand("setfood")).setTabCompleter(new setfoodTC());
+
+        Objects.requireNonNull(getCommand("sethealth")).setExecutor(new sethealthCMD(this)); //with THIS we gave access to the server
+        Objects.requireNonNull(getCommand("sethealth")).setTabCompleter(new sethealthTC());
 
         Objects.requireNonNull(getCommand("kit")).setExecutor(new kits());
         Objects.requireNonNull(getCommand("kit")).setTabCompleter(new kitsTC());
 
-        Objects.requireNonNull(getCommand("test")).setExecutor(new chat()); //no one need only me
-        Objects.requireNonNull(getCommand("test2")).setExecutor(new chat()); //no one need only me meeen
-
+        Objects.requireNonNull(getCommand("broadcast")).setExecutor(new broadcastCMD());
 
         Objects.requireNonNull(getCommand("reloadFicure")).setExecutor(this);
 
 
-        //listener registration
+        //listener/event registration
         getServer().getPluginManager().registerEvents(new events(), this);  //this -= is FICURE.JAVA
+        //------------------------ /FUNCTIONS ----------------------------------------
 
+        //------------------------ TEST FUNCTIONS ------------------------------------
+        Objects.requireNonNull(getCommand("test")).setExecutor(new FunctionsCHAT()); //no one need only me
+        Objects.requireNonNull(getCommand("test2")).setExecutor(new FunctionsCHAT()); //no one need only me men
+        //------------------------ /TEST FUNCTIONS -------------------------------------
     }
 
     public static Ficure getInstance() {
         return instance;
-    }
+    } //FOR CONFIG READ! not needed*
 
+    //------------------------- CONFIG RELOAD --------------------------------
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if (command.getName().equalsIgnoreCase("reloadFicure")){
             config = YamlConfiguration.loadConfiguration(cfile);
@@ -99,11 +110,14 @@ public final class Ficure extends JavaPlugin implements Listener {
         }
         return true;
     }
+    //------------------------- /CONFIG RELOAD --------------------------------
 
 
-
+    //------------------------- DISABLING -------------------------------------
     @Override
     public void onDisable() {
-        System.out.println(ANSI_RED + "Ficure by RalexME - Successfully disabled");
+
+        getServer().getLogger().info(ANSI_RED + "Ficure by RalexME - Successfully disabled");
     }
+    //------------------------- /DISABLING ------------------------------------
 }
