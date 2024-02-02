@@ -27,6 +27,9 @@ Commands:
     
    - /sethealth <playerName> <healthLevel>
       - Set health level for players!
+    
+   - /broadcast <message>
+      - Broadcasting u'r message for all players!
 
 Events Update:
 
@@ -43,10 +46,10 @@ Chat Update:
 File Update/Design:
 
    - Updated some files, better expirience with comments!
+   - Updated folders, and source code design
 
 
 In Development:
-   - /broadcast {u'r message) {in development} Broadcasting u'r message for all players!
    - Announcements
    - /clear inventory {in development}
    - Premissions {in development}
