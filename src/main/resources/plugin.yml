@@ -2,7 +2,7 @@ name: Ficure
 version: '${project.version}'
 main: ts.ralexme.ficure.Ficure
 api-version: '1.16'
-description: Ficure is a STILL simple plugin for u'r minecraft server, but it will/have many interesting features!
+description: Ficure is a STILL simple plugin for u'r minecraft server, but it will/have many interesting features! <-> developed by RalexME with ❤️
 commands:
 
 
@@ -19,31 +19,49 @@ commands:
     description: It will clear the chat on the server!
     aliases: cl
     usage: /clear chat
+    permission: ficure.clearchat
 
   calculate:
     description: It will calculate, u can use (+|-|/|*) for calculating!
     aliases: calc
     usage: /calculator ( num1 | + or - or / or * | num2) for calculating
+    permission: ficure.calculate
 
   me:
     description: You can show u'r reaction for friends!
     usage: /me <Hello | GoodBye | WhatsUp>
+    permission: ficure.me
 
   spawnBoss:
     description: Spawns only four, favorite mobs(type\ boss) - EnderMan, Wither, Creeper!
     usage: /spawnBoss <enderman | wither | creeper | skeleton>
+    permission: ficure.spawnboss
 
   kit:
     description: Give's for the player kit (start, medium, maximum)
     usage: /kit <start, medium, maximum>
+    permission: ficure.kit
 
   setfood:
     description: Set food to Player!
     usage: /setfood <playerName> <FoodLevel>
+    permission: ficure.setfood
 
   sethealth:
     description: Set food to Player!
     usage: /sethealth <playerName> <HealthLevel>
+    permission: ficure.sethealth
+
+  vanish:
+    description: vanish command for u'r minecraft server
+    usage: /vanish
+    aliases: v
+    permission: vanish.vanish
+
+  setvanish:
+    description: Setting vanish for players
+    usage: /setvanish
+    permission: vanish.setvanish
 
 
 #--------------BBBBBBBB------- 0000----------------------------------------------------------------#
@@ -58,15 +76,18 @@ commands:
   heal:
     description: Heals you when you want!
     usage: /heal
+    permission: ficure.heal
 
   feed:
     description: Feed you when you want!
     usage: /feed
+    permission: ficure.feed
 
   broadcast:
     description: Broadcast u'r messages for the server
     aliases: br
     usage: /broadcast <message>
+    permission: ficure.broadcast
 
 
   #--------------------------------------------------------------------------------------------------#
@@ -92,3 +113,4 @@ commands:
   reloadFicure:
     description: Reloads Ficure - config.yml
     usage: /reloadFicure
+    permission: ficure.reloadficure

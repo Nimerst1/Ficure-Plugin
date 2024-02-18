@@ -15,8 +15,12 @@
 
  /sethealth - ficure.sethealth
 
- /clear FunctionsCHAT - ficure.clearchat
+ /clear chat - ficure.clearchat
 
  /calculate - ficure.calculate
 
  /broadcast - ficure.broadcast
+
+ /vanish -> vanish.vanish
+
+ /setvanish -> vanish.setvanish

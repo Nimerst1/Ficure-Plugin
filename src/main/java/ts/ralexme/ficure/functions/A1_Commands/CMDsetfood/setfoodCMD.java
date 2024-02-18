@@ -16,11 +16,9 @@ import java.util.UUID;
 public class setfoodCMD implements CommandExecutor {
 
     private final JavaPlugin plugin;
-
     public setfoodCMD(JavaPlugin plugin) {
         this.plugin = plugin; //to reserve ficure - head file plugin
     }
-
     private final Map<UUID, Long> cooldowns = new HashMap<>();  //cooldown Getting UUID, and long value
     private static final long cl_t = 30000; //30 sec The cooldown
 

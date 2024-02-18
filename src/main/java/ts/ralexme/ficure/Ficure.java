@@ -5,11 +5,16 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import ts.ralexme.ficure.functions.A1_Commands.CMDsetfood.setfoodTC;
 import ts.ralexme.ficure.functions.A1_Commands.CMDsethealth.sethealthTC;
+import ts.ralexme.ficure.functions.A1_Commands.CMDsetvanish.SetvanishCMD;
+import ts.ralexme.ficure.functions.A1_Commands.CMDvanish.VanishCMD;
 import ts.ralexme.ficure.functions.B1_Commands.broadcastCMD;
 import ts.ralexme.ficure.functions.Z0_TestFUNCTIONs.FunctionsCHAT;
 import ts.ralexme.ficure.functions.A1_Commands.CMDcalculate.CalculateCMD;
@@ -87,9 +92,14 @@ public final class Ficure extends JavaPlugin implements Listener {
 
         Objects.requireNonNull(getCommand("reloadFicure")).setExecutor(this);
 
+        Objects.requireNonNull(getCommand("vanish")).setExecutor(new VanishCMD());
+        Objects.requireNonNull(getCommand("setvanish")).setExecutor(new SetvanishCMD(this));
+
 
         //listener/event registration
         getServer().getPluginManager().registerEvents(new events(), this);  //this -= is FICURE.JAVA
+        //listener/event registration for setvanish
+        getServer().getPluginManager().registerEvents(new SetvanishCMD(this), this);
         //------------------------ /FUNCTIONS ----------------------------------------
 
         //------------------------ TEST FUNCTIONS ------------------------------------
@@ -100,11 +110,15 @@ public final class Ficure extends JavaPlugin implements Listener {
 
     public static Ficure getInstance() {
         return instance;
-    } //FOR CONFIG READ! not needed*
+    } //FOR CONFIG READ!
 
     //------------------------- CONFIG RELOAD --------------------------------
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if (command.getName().equalsIgnoreCase("reloadFicure")){
+            if(!commandSender.hasPermission("ficure.reloadficure")){
+                commandSender.sendMessage(ChatColor.RED + "You must have permission to use /" + command.getName());
+                return true;
+            }
             config = YamlConfiguration.loadConfiguration(cfile);
             commandSender.sendMessage(ChatColor.YELLOW + Ficure.getInstance().getConfig().getString("server_prefix") + ChatColor.DARK_GRAY +" -> " + ChatColor.GREEN + "Ficure config - reloaded successfully");
         }
@@ -120,4 +134,19 @@ public final class Ficure extends JavaPlugin implements Listener {
         getServer().getLogger().info(ANSI_RED + "Ficure by RalexME - Successfully disabled");
     }
     //------------------------- /DISABLING ------------------------------------
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event){
+        Player player = event.getPlayer();
+        for(Player p : VanishCMD.vanished){
+            p.hidePlayer(player);
+        }
+    }
+    @EventHandler
+    public void onPJoin(PlayerJoinEvent event){
+        Player player = event.getPlayer();
+        for(Player p : SetvanishCMD.setvanish){
+            p.hidePlayer(player);
+        }
+    }
 }

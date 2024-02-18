@@ -26,7 +26,7 @@ public class sethealthTC implements TabCompleter {
             return onlinePlayerName;
         }
         if(strings.length == 2) {
-            return Arrays.asList("1", "5", "10", "15", "30", "40");
+            return Arrays.asList("1", "5", "10", "15", "20");
         }
         return new ArrayList<>();
     }

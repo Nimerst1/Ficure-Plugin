@@ -1,5 +1,10 @@
 # Write u'r server name
-server_prefix: 'SERVERNAME'
+server_prefix: 'FicureConfig'
+#Customize plugin messages
+vanishenabled: 'Vanish mode enabled!'
+vanishdisabled: 'Vanish mode disabled!'
+setvanishenabled: 'You enabled vanish for the '
+setvanishdisabled: 'You disabled vanish for the '
 
 
 
@@ -14,3 +19,5 @@ server_prefix: 'SERVERNAME'
 # /clear FunctionsCHAT - ficure.clearchat
 # /calculate - ficure.calculate
 # /broadcast - ficure.broadcast
+# /vanish -> vanish.vanish
+# /setvanish -> vanish.setvanish
